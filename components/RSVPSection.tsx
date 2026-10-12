@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useLang, type TKey } from "@/lib/i18n";
 
 const PANEL_API = "https://panel-invitados.vercel.app/api/confirmar";
-const RSVP_URL  = "https://graduacion-julissa-tranquilino-mendoza.vercel.app";
+const RSVP_URL  = "https://save-the-date-julissa-tranquilino-mendoza.vercel.app";
 /* PENDIENTE: fecha límite de RSVP no confirmada por el cliente — se congela hasta el día del evento */
 const RSVP_DEADLINE = new Date(2027, 4, 15, 23, 59, 0, 0) /* PENDIENTE: fecha limite RSVP por confirmar */;
 

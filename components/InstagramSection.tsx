@@ -6,7 +6,7 @@ import { useLang } from "@/lib/i18n";
    Cambiar SOLO esta línea y regenerar el QR con:
      python scripts/gen-qr-album.py "<URL_REAL>"
    ══════════════════════════════════════════════════════════════════ */
-const URL_ALBUM = "https://graduacion-julissa-tranquilino-mendoza.vercel.app";
+const URL_ALBUM = "https://save-the-date-julissa-tranquilino-mendoza.vercel.app";
 
 export default function InstagramSection() {
   const { t, lang } = useLang();

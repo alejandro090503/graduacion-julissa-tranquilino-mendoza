@@ -4,17 +4,10 @@ import IntroSequence from "./IntroSequence";
 import Hero from "./Hero";
 import Ornament from "./Ornament";
 import CountdownTimer from "./CountdownTimer";
-import Ubicacion from "./Ubicacion";
 import CalendarioBtn from "./CalendarioBtn";
-import Itinerario from "./Itinerario";
-import DressCode from "./DressCode";
-import Carrusel from "./Carrusel";
-import Familia from "./Familia";
-import MesaRegalos from "./MesaRegalos";
-import InstagramSection from "./InstagramSection";
-import RSVPWrapper from "./RSVPWrapper";
 import Footer from "./Footer";
 import Cierre from "./Cierre";
+import RetratoArco from "./RetratoArco";
 import MusicFab, { type MusicFabHandle } from "./MusicFab";
 import ScrollReveal from "./ScrollReveal";
 import FondosScroll from "./FondosScroll";
@@ -102,9 +95,11 @@ export default function InvitacionClient() {
           </p>
         </ScrollReveal>
 
-        {/* FAMILIA — justo después del header */}
+        <div id="fondos-inicio" aria-hidden="true" />
+
+        {/* RETRATO */}
         <ScrollReveal>
-          <Familia />
+          <RetratoArco />
         </ScrollReveal>
 
         {/* ORNAMENTO */}
@@ -142,14 +137,8 @@ export default function InvitacionClient() {
           <Ornament />
         </ScrollReveal>
 
-        {/* UBICACIÓN */}
-        <ScrollReveal>
-          <Ubicacion />
-        </ScrollReveal>
-
-        {/* ANCLA — a partir de aquí (ya pasada Ubicación) rotan los fondos */}
-        <div id="fondos-inicio" aria-hidden="true" />
-
+        {/* SAVE THE DATE: ubicación, itinerario, dress code, galería, regalos, álbum y RSVP
+            llegan con la invitación formal. */}
         {/* CALENDARIO */}
         <ScrollReveal>
           <CalendarioBtn />
@@ -158,54 +147,6 @@ export default function InvitacionClient() {
         <ScrollReveal>
           <Ornament />
         </ScrollReveal>
-
-        {/* ITINERARIO */}
-        <ScrollReveal>
-          <Itinerario />
-        </ScrollReveal>
-
-        <ScrollReveal>
-          <Ornament />
-        </ScrollReveal>
-
-        {/* DRESS CODE */}
-        <ScrollReveal>
-          <DressCode />
-        </ScrollReveal>
-
-        <ScrollReveal>
-          <Ornament />
-        </ScrollReveal>
-
-        {/* CARRUSEL DE FOTOS — rueda 3D.
-            Sin ScrollReveal a proposito: ese wrapper anima translateY sobre el
-            contenedor y rompe el preserve-3d del anillo. */}
-        <Carrusel />
-
-        <ScrollReveal>
-          <Ornament />
-        </ScrollReveal>
-
-        {/* MESA DE REGALOS */}
-        <ScrollReveal>
-          <MesaRegalos />
-        </ScrollReveal>
-
-        <ScrollReveal>
-          <Ornament />
-        </ScrollReveal>
-
-        {/* INSTAGRAM / ÁLBUM */}
-        <ScrollReveal>
-          <InstagramSection />
-        </ScrollReveal>
-
-        <ScrollReveal>
-          <Ornament />
-        </ScrollReveal>
-
-        {/* RSVP */}
-        <RSVPWrapper />
 
         {/* FOOTER */}
         <ScrollReveal>

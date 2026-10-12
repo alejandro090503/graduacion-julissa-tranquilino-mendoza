@@ -225,3 +225,16 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* Hero graduación: linternas y sol */
+@keyframes lanternRise {
+  0%   { transform: translateY(0) translateX(0); opacity: 0; }
+  8%   { opacity: 1; }
+  50%  { transform: translateY(-55vh) translateX(10px); }
+  92%  { opacity: 1; }
+  100% { transform: translateY(-112vh) translateX(-6px); opacity: 0; }
+}
+@keyframes sunSpin { to { transform: translate(-50%,-52%) rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .hero-lantern, .hero-sun { animation: none !important; }
+}

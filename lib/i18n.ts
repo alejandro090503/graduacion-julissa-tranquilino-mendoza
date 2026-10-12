@@ -43,7 +43,7 @@ export const dict = {
 
     /* ── Frase ── */
     phrase:
-      "Después de cuatro años de esfuerzo, aprendizaje y sueños, por fin veo la luz de una nueva etapa. Quiero compartir contigo la alegría de mi graduación de la preparatoria.",
+      "Después de cuatro años de esfuerzo, aprendizaje y sueños, por fin veo la luz de una nueva etapa. Aparta la fecha: muy pronto recibirás la invitación formal a mi graduación.",
 
     /* ── Familia ── */
     familyKicker: "Con el amor y apoyo de",
@@ -51,7 +51,7 @@ export const dict = {
 
     /* ── Cierre ── */
     closingText:
-      "Con mucha ilusión te espero para celebrar juntos este logro. Tu presencia hará de esta noche un recuerdo lleno de alegría.",
+      "Guarda la fecha en tu calendario. Muy pronto te enviaré todos los detalles de esta noche tan especial.",
     closingName: "Julissa",
     closingAlt: "Julissa con vestido de gala",
     courtTitle: "Mis Padres",
