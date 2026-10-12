@@ -1,0 +1,227 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f7f9ff;
+  --accent: #1a2ee6;
+  --accent-soft: #d6dcff;
+  --dark: #0000a0;
+  --text: #10132e;
+  --surface: rgba(214,220,255,0.10);
+  --card: rgba(255,255,255,0.88);
+  --rose: #d6dcff;
+  --gold: #d4af37;
+  --gold-soft: #e8c04a;
+  --gold-deep: #a67900;
+  --pink: #d6dcff;
+  --cream: #FFFFFF;
+  --accent-deep: #0000a0;
+  --paper: rgba(255,255,255,0.92);
+  --ink: #10132e;
+  --ink-soft: rgba(16,19,46,0.86);
+  --hair: rgba(0,12,217,0.20);
+
+  /* Verde de apoyo — la torre, la enredadera y el bosque.
+     Salvia apagado, elegido para convivir con el lila y el dorado:
+     nunca compite con ellos ni sustituye al goldSweep.
+     --green da 5.67:1 en el peor pixel del compositado real y
+     --green-deep 10.87:1 sobre blanco: ambos valen para texto.
+     --green-soft es SOLO decorativo (1.98:1, jamas texto). */
+  --green-soft: #a8bfa0;
+  --green: #3b5133;
+  --green-deep: #2f4229;
+  --vine: rgba(59,81,51,0.34);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 17px;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Animación de partículas flotantes */
+@keyframes floatUp {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+  100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes hintFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-5px); }
+}
+
+@keyframes shimmerSweep {
+  0%   { left: -130%; }
+  55%  { left: 200%; }
+  100% { left: 200%; }
+}
+
+@keyframes fabpulse {
+  0%   { box-shadow: 0 0 0 0 rgba(0,12,217,.50); }
+  70%  { box-shadow: 0 0 0 18px rgba(0,12,217,0); }
+  100% { box-shadow: 0 0 0 0 rgba(0,12,217,0); }
+}
+
+@keyframes vinylSpin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes vinylPulse {
+  0%, 100% { transform: scale(1);    opacity: 0.32; }
+  50%       { transform: scale(1.18); opacity: 0.06; }
+}
+
+/* Scroll reveal base */
+.rv {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.rv.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============ RESPLANDOR DE ORO (títulos importantes) ============ */
+@keyframes goldSweep {
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+/* Uso: className="gold-shine" en el elemento de texto, quitando del style
+   inline cualquier background/backgroundClip/WebkitTextFillColor/color que
+   tuviera — este bloque los reemplaza. El pico del degradado topa en #a8822f
+   (nunca en blanco ni en el dorado claro): así incluso sobre el píxel más
+   claro de los fondos de linternas el título grande queda en 3.19:1. */
+.gold-shine {
+  background-image: linear-gradient(100deg,
+    #6b4f1c 0%, #7a5c22 10%, #8a6a28 20%, #a8822f 27%, #a8822f 32%, #a8822f 37%,
+    #9a7830 46%, #6b4f1c 58%, #8a6a28 70%, #9a7830 80%, #7a5c22 90%, #6b4f1c 100%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: none;
+  animation: goldSweep 5s linear infinite;
+  filter: drop-shadow(0 0 5px rgba(212,175,55,.45)) drop-shadow(0 0 16px rgba(212,175,55,.25));
+  /* background-clip:text recorta los rasgos que sobresalen de fuentes script
+     (Great Vibes); se ensancha la caja con padding y se cancela con margen
+     negativo para no mover el layout. */
+  padding-left: .34em;
+  padding-right: .34em;
+  margin-left: -.34em;
+  margin-right: -.34em;
+  display: block;
+  text-align: center;
+}
+
+/* Variante para el nombre del Hero: más resplandor porque compite con más
+   elementos decorativos y con el fondo de linternas. */
+.gold-shine-hero {
+  animation-duration: 6s;
+  filter: drop-shadow(0 0 10px rgba(212,175,55,.6)) drop-shadow(0 0 28px rgba(212,175,55,.35)) drop-shadow(0 2px 6px rgba(0,0,160,.22));
+}
+
+/* Variante para el CIERRE: va sobre foto con velo oscuro, asi que el
+   degradado sube a dorados claros (el #a8822f del .gold-shine base esta
+   calibrado para fondo claro y sobre oscuro se apaga). Pico #f2d478:
+   10.1:1 sobre el velo (38,18,48). */
+.gold-shine-cierre {
+  background-image: linear-gradient(100deg,
+    #c9a24e 0%, #dcb85f 12%, #edcd72 22%, #f2d478 30%, #f2d478 36%,
+    #e6c468 46%, #c9a24e 58%, #edcd72 72%, #dcb85f 84%, #c9a24e 100%);
+  filter: drop-shadow(0 0 12px rgba(242,212,120,.55)) drop-shadow(0 0 34px rgba(212,175,55,.40));
+  animation-duration: 6.5s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gold-shine { animation: none; background-position: 50% center; }
+}
+
+/* ============ SOBRE INTERACTIVO (Lluvia de Sobres) ============ */
+.env-interactive{display:flex;flex-direction:column;align-items:center;cursor:pointer;-webkit-tap-highlight-color:transparent;outline:none;border:none;background:none;padding:0;}
+.env-body{perspective:700px;position:relative;width:260px;height:200px;animation:env-breathe 3.6s ease-in-out infinite;}
+.env-body svg.env-svg{width:100%;height:100%;}
+.env-flap-wrap{position:absolute;top:46px;left:18px;width:224px;height:86px;transform-origin:top center;transform-style:preserve-3d;backface-visibility:hidden;-webkit-backface-visibility:hidden;transition:transform .65s cubic-bezier(.4,0,.2,1);pointer-events:none;z-index:2;}
+.env-interactive.open .env-flap-wrap{transform:rotateX(-175deg);}
+.env-open-content{overflow:hidden;max-height:0;opacity:0;transition:max-height .55s .3s ease,opacity .4s .38s ease;display:flex;flex-direction:column;align-items:center;gap:8px;padding:0 20px;text-align:center;pointer-events:none;}
+.env-interactive.open .env-open-content{max-height:240px;opacity:1;pointer-events:auto;}
+.env-mailbox-icon{width:40px;height:40px;color:#5c4300;margin-top:10px;}
+.env-title{font-family:var(--font-cormorant),serif;font-size:30px;color:#0000a0;letter-spacing:.5px;line-height:1.2;}
+.env-desc{font-family:var(--font-cormorant),serif;font-size:13px;font-style:italic;color:rgba(0,0,160,.80);line-height:1.75;}
+.env-tap-hint{font-family:var(--font-cormorant),serif;font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#5c4300;opacity:1;margin-top:14px;transition:opacity .3s;text-align:center;}
+.env-interactive.open ~ .env-tap-hint{opacity:0;}
+@keyframes env-breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
+@media (prefers-reduced-motion: reduce){.env-body{animation:none;}}
+
+/* ============ BARRIDO DORADO EN BOTONES (.gold-btn) ============
+   Mismo lenguaje que goldSweep del hero, pero como brillo sobre la
+   superficie del botón: el texto sigue siendo blanco sólido.
+   El pico del velo dorado se topa en alpha .14 — medido sobre el
+   compositado real, el peor contraste texto/fondo queda en 4.76:1
+   (sobre #000cd9, el extremo más claro del degradado morado). */
+@keyframes btnGoldSweep {
+  0%   { transform: translateX(-160%) skewX(-18deg); }
+  55%  { transform: translateX(420%)  skewX(-18deg); }
+  100% { transform: translateX(420%)  skewX(-18deg); }
+}
+@keyframes btnGoldGlow {
+  0%, 100% { box-shadow: 0 4px 18px rgba(0,0,160,0.30), 0 0 0 1px rgba(212,175,55,0.30); }
+  50%      { box-shadow: 0 6px 24px rgba(0,0,160,0.34), 0 0 14px 1px rgba(212,175,55,0.42), 0 0 0 1px rgba(212,175,55,0.62); }
+}
+.gold-btn {
+  position: relative;
+  overflow: hidden;
+  animation: btnGoldGlow 4.5s ease-in-out infinite;
+}
+.gold-btn::after {
+  content: "";
+  position: absolute;
+  top: -60%;
+  bottom: -60%;
+  left: 0;
+  width: 34%;
+  pointer-events: none;
+  background: linear-gradient(100deg,
+    rgba(255,232,160,0) 0%,
+    rgba(255,232,160,0.05) 26%,
+    rgba(255,232,160,0.14) 50%,
+    rgba(255,232,160,0.05) 74%,
+    rgba(255,232,160,0) 100%);
+  animation: btnGoldSweep 4.5s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .gold-btn, .gold-btn::after { animation: none; }
+  .gold-btn::after { opacity: 0; }
+}
+
+/* ── Accesibilidad: sin movimiento ──────────────────────────
+   Las partículas del hero y los barridos dorados son decorativos;
+   con reduced-motion se apagan en vez de quedarse a medio camino. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
