@@ -2,7 +2,7 @@
    sobre noche azul marino. Sustituye al carrusel en el Save the Date. */
 export default function RetratoArco() {
   return (
-    <section style={{ padding: "30px 10px 10px", display: "flex", justifyContent: "center", width: "100%" }}>
+    <section style={{ padding: "58px 10px 10px", display: "flex", justifyContent: "center", width: "100%" }}>
       <figure className="retrato-float" style={{ margin: 0, position: "relative", width: "100%", maxWidth: 320 }}>
         <div style={{
           position: "relative",
@@ -51,7 +51,7 @@ export default function RetratoArco() {
           </div>
         </div>
         {/* sol de Corona en la clave del arco */}
-        <i aria-hidden="true" className="std-cal-sun" style={{ top: 0, width: 64, height: 64 }} />
+        <i aria-hidden="true" className="arc-sun" />
       </figure>
     </section>
   );

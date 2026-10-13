@@ -232,8 +232,6 @@ export function PieStd() {
       <div className="std-foot-inner">
         <div className="std-foot-medal">
           <i className="std-foot-sun" aria-hidden="true" />
-          <span className="std-foot-ring" aria-hidden="true" />
-          <span className="std-foot-j gold-shine gold-shine-cierre">J</span>
         </div>
         <p className="std-foot-name">Julissa Tranquilino Mendoza</p>
         <div className="std-rule" aria-hidden="true"><span /><i /><span /></div>

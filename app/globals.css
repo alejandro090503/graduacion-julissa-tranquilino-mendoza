@@ -294,7 +294,7 @@ body {
 .std-cal-g .d { position: relative; font-family: var(--font-cormorant), serif; font-weight: 600; font-size: 17px; line-height: 36px; color: #f4ecd8; }
 .std-cal-g .d b { position: relative; font-weight: inherit; }
 .std-cal-g .d.on b { color: #0a1550; font-weight: 700; }
-.std-cal-sun { position: absolute; left: 50%; top: 50%; width: 46px; height: 46px; transform: translate(-50%, -50%); background: url('/sol-corona-oro.webp') center/contain no-repeat; filter: drop-shadow(0 0 10px rgba(242,212,120,.7)); animation: sunSpin 30s linear infinite; }
+.std-cal-sun { position: absolute; left: 50%; top: 50%; width: 46px; height: 46px; margin: -23px 0 0 -23px; background: url('/sol-corona-oro.webp') center/contain no-repeat; filter: drop-shadow(0 0 10px rgba(242,212,120,.7)); animation: sunSpin 30s linear infinite; }
 @keyframes calSunIn { from { opacity: 0; scale: .3; } to { opacity: 1; scale: 1; } }
 .std-place { margin-top: 26px; display: flex; flex-direction: column; align-items: center; gap: 4px; font-family: var(--font-cormorant), serif; font-weight: 700; font-size: 17px; letter-spacing: .2em; color: #f4ecd8; }
 .std-place .pl-sub { display: inline-flex; align-items: center; gap: 7px; font-weight: 600; font-size: 18px; letter-spacing: .03em; color: #c4ccfa; }
@@ -373,3 +373,21 @@ body {
   .std-btn, .std-btn::after, .std-orbit, .std-md-sun, .std-cal-sun, .hero-card-float, .retrato-float, .std-foot-sun, .std-cal, .std-dayword, .std-big, .std-md, .std-rule i, .std-place svg, .std-foot-medal, .std-foot-quote, .std-lanterns .hero-lantern { animation: none !important; }
   .std-roll-strip { transition: none; }
 }
+
+/* ===== Botón "Toca para abrir" premium ===== */
+.tap-btn { position: relative; pointer-events: auto; touch-action: manipulation; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 4px;
+  padding: 18px 46px 16px; min-width: 250px; border-radius: 999px; border: 1px solid rgba(212,175,55,.85);
+  background: linear-gradient(180deg, rgba(20,37,110,.72), rgba(5,11,48,.86)); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 14px 40px rgba(0,0,0,.45), inset 0 0 0 4px rgba(5,11,48,.55), inset 0 0 0 5px rgba(212,175,55,.35), 0 0 30px rgba(212,175,55,.18);
+  animation: levitate 4s ease-in-out infinite; overflow: visible; }
+.tap-ring { position: absolute; inset: -7px; border-radius: 999px; border: 1px solid rgba(242,212,120,.6); animation: tapPulse 2.6s ease-out infinite; pointer-events: none; }
+@keyframes tapPulse { 0% { transform: scale(.96); opacity: .9; } 100% { transform: scale(1.18, 1.5); opacity: 0; } }
+.tap-sun { position: absolute; top: -22px; left: 50%; width: 40px; height: 40px; margin-left: -20px; background: url('/sol-corona-oro.webp') center/contain no-repeat; filter: drop-shadow(0 0 10px rgba(242,212,120,.8)); animation: sunSpin 24s linear infinite; }
+.tap-txt { font-family: var(--font-cormorant), serif; font-weight: 700; font-size: 15px; letter-spacing: .42em; text-indent: .42em; text-transform: uppercase; white-space: nowrap;
+  background: linear-gradient(100deg, #c9a24e 0%, #f2d478 30%, #fff4cf 45%, #e6c468 60%, #c9a24e 100%); background-size: 250% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; animation: goldSweep 4s linear infinite; }
+.tap-sub { font-family: var(--font-great-vibes), cursive; font-size: 21px; color: #f4ecd8; line-height: 1.2; }
+@media (prefers-reduced-motion: reduce) { .tap-btn, .tap-ring, .tap-sun, .tap-txt { animation: none !important; } }
+
+/* Sol en la clave del arco: centrado con margen (el giro no lo desplaza) y por encima del retrato */
+.arc-sun { position: absolute; left: 50%; top: -46px; width: 42px; height: 42px; margin-left: -21px; background: url('/sol-corona-oro.webp') center/contain no-repeat; filter: drop-shadow(0 0 10px rgba(242,212,120,.6)); animation: sunSpin 40s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .arc-sun { animation: none !important; } }

@@ -31,7 +31,7 @@ export default function InvitacionClient() {
     setTimeout(() => {
       setSplashMounted(false);
       window.scrollTo({ top: 0, behavior: "instant" });
-    }, 1000);
+    }, 1500);
   };
 
   return (
@@ -46,7 +46,7 @@ export default function InvitacionClient() {
       <div
         style={{
           opacity: contentVisible ? 1 : 0,
-          transition: "opacity 0.95s ease",
+          transition: "opacity 1.4s cubic-bezier(0.4,0,0.2,1)",
           maxWidth: 430,
           margin: "0 auto",
           position: "relative",

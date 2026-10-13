@@ -8,7 +8,8 @@ const VIDEO_PRINCESS =
   "https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/video/graduacion-julissa-tranquilino-mendoza/princess.mp4";
 
 /** Duración del crossfade entre escenas (ms) */
-const XFADE = 900;
+/* Una sola transición para todo: sobre→video 1→video 2→Save the Date */
+const XFADE = 1400;
 /** Si un video no arranca en este tiempo, se salta la escena */
 const START_TIMEOUT = 5000;
 
@@ -149,7 +150,7 @@ export default function IntroSequence({ onUnlock, onFinish }: Props) {
         inset: 0,
         zIndex: 10000,
         overflow: "hidden",
-        background: "linear-gradient(160deg,#f7f9ff 0%,#d6dcff 50%,#f7f9ff 100%)",
+        background: "#050b30",
         opacity: ready ? 1 : 0,
         transition: "opacity 0.6s ease",
       }}
@@ -186,32 +187,14 @@ export default function IntroSequence({ onUnlock, onFinish }: Props) {
           }}>
           <button
             type="button"
+            className="tap-btn"
             onClick={(e) => { e.stopPropagation(); handleTap(); }}
             aria-label={t("introTapAria")}
-            style={{
-              position: "relative",
-              pointerEvents: "auto",
-              minHeight: 52,
-              touchAction: "manipulation",
-              fontFamily: "var(--font-cormorant), serif",
-              fontSize: 13,
-              letterSpacing: 8,
-              textTransform: "uppercase",
-              fontWeight: 700,
-              color: "#00006e",
-              whiteSpace: "nowrap",
-              padding: "15px 40px 15px 48px",
-              background: "rgba(247,249,255,0.80)",
-              border: "1.5px solid rgba(212,175,55,0.62)",
-              borderRadius: 40,
-              backdropFilter: "blur(20px)",
-              WebkitBackdropFilter: "blur(20px)",
-              boxShadow: "0 6px 22px rgba(0,0,160,0.22), 0 0 0 1px rgba(214,220,255,0.55) inset",
-              animation: "hintFloat 3.2s ease-in-out infinite",
-              cursor: "pointer",
-            }}
           >
-            {t("introTap")}
+            <span className="tap-ring" aria-hidden="true" />
+            <i className="tap-sun" aria-hidden="true" />
+            <span className="tap-txt">{t("introTap")}</span>
+            <span className="tap-sub" aria-hidden="true">Save the Date · Julissa</span>
           </button>
           </div>
         )}
@@ -253,9 +236,9 @@ export default function IntroSequence({ onUnlock, onFinish }: Props) {
             textIndent: 3,
             textTransform: "uppercase",
             fontWeight: 700,
-            color: "#00006e",
-            background: "rgba(247,249,255,0.78)",
-            border: "1px solid rgba(212,175,55,0.50)",
+            color: "#f2d478",
+            background: "rgba(5,11,48,0.55)",
+            border: "1px solid rgba(212,175,55,0.55)",
             borderRadius: 30,
             padding: "7px 16px",
             backdropFilter: "blur(10px)",
