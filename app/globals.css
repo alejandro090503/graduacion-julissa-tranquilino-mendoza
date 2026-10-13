@@ -294,7 +294,7 @@ body {
 .std-cal-g .d { position: relative; font-family: var(--font-cormorant), serif; font-weight: 600; font-size: 17px; line-height: 36px; color: #f4ecd8; }
 .std-cal-g .d b { position: relative; font-weight: inherit; }
 .std-cal-g .d.on b { color: #0a1550; font-weight: 700; }
-.std-cal-sun { position: absolute; left: 50%; top: 50%; width: 52px; height: 52px; transform: translate(-50%, -50%); background: url('/sol-corona-oro.webp') center/contain no-repeat; filter: drop-shadow(0 0 10px rgba(242,212,120,.7)); animation: sunSpin 30s linear infinite; }
+.std-cal-sun { position: absolute; left: 50%; top: 50%; width: 46px; height: 46px; transform: translate(-50%, -50%); background: url('/sol-corona-oro.webp') center/contain no-repeat; filter: drop-shadow(0 0 10px rgba(242,212,120,.7)); animation: sunSpin 30s linear infinite; }
 @keyframes calSunIn { from { opacity: 0; scale: .3; } to { opacity: 1; scale: 1; } }
 .std-place { margin-top: 26px; display: flex; flex-direction: column; align-items: center; gap: 4px; font-family: var(--font-cormorant), serif; font-weight: 700; font-size: 17px; letter-spacing: .2em; color: #f4ecd8; }
 .std-place .pl-sub { display: inline-flex; align-items: center; gap: 7px; font-weight: 600; font-size: 18px; letter-spacing: .03em; color: #c4ccfa; }
@@ -318,7 +318,7 @@ body {
 
 /* Botón con brillo suave */
 .std-btn { position: relative; overflow: hidden; display: inline-flex; align-items: center; gap: 10px; padding: 16px 30px; border-radius: 40px; text-decoration: none;
-  font-family: var(--font-cormorant), serif; font-weight: 700; font-size: 16px; letter-spacing: .16em; text-transform: uppercase; color: #0a1550;
+  font-family: var(--font-cormorant), serif; font-weight: 700; font-size: 15px; letter-spacing: .08em; white-space: nowrap; text-transform: uppercase; color: #0a1550;
   background: linear-gradient(135deg, #f6e3a1 0%, #d4af37 45%, #b8913a 100%); box-shadow: 0 10px 30px rgba(212,175,55,.35), inset 0 1px 0 rgba(255,255,255,.6); animation: btnGlow 3.2s ease-in-out infinite; }
 .std-btn svg { width: 19px; height: 19px; }
 .std-btn::after { content: ""; position: absolute; top: 0; left: -60%; width: 45%; height: 100%; background: linear-gradient(105deg, transparent, rgba(255,255,255,.75), transparent); transform: skewX(-18deg); animation: btnShine 3.6s ease-in-out infinite; }
@@ -357,7 +357,7 @@ body {
 .std-foot-inner { position: relative; z-index: 2; max-width: 380px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
 .std-foot-medal { position: relative; width: 150px; height: 150px; display: grid; place-items: center; animation: levitate 6s ease-in-out infinite; }
 .std-foot-sun { position: absolute; inset: 0; background: url('/sol-corona-oro.webp') center/contain no-repeat; filter: drop-shadow(0 0 18px rgba(242,212,120,.45)); animation: sunSpin 50s linear infinite; }
-.std-foot-ring { position: absolute; inset: 34%; border-radius: 50%; background: radial-gradient(circle at 50% 35%, #14256e, #050b30); box-shadow: 0 0 0 1.5px #d4af37, 0 0 0 5px #050b30, 0 0 0 6px rgba(212,175,55,.5), 0 8px 22px rgba(0,0,0,.5); }
+.std-foot-ring { position: absolute; inset: 29%; border-radius: 50%; background: radial-gradient(circle at 50% 35%, #14256e, #050b30); box-shadow: 0 0 0 1.5px #d4af37, 0 0 0 5px #050b30, 0 0 0 6px rgba(212,175,55,.5), 0 8px 22px rgba(0,0,0,.5); }
 .std-foot-j { position: relative; font-family: var(--font-great-vibes), cursive; font-size: 44px; line-height: 1; padding-top: 6px; }
 .std-foot-name { font-family: var(--font-cormorant), serif; font-weight: 700; font-size: clamp(16px, 4.6vw, 19px); letter-spacing: .2em; text-indent: .2em; text-transform: uppercase; color: #f4ecd8; margin-top: 14px; line-height: 1.5; }
 .std-foot-date { font-family: var(--font-cormorant), serif; font-weight: 700; font-size: 17px; letter-spacing: .34em; text-indent: .34em; color: #e6c870; }
