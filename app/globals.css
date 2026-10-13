@@ -234,7 +234,112 @@ body {
   92%  { opacity: 1; }
   100% { transform: translateY(-112vh) translateX(-6px); opacity: 0; }
 }
-@keyframes sunSpin { to { transform: translate(-50%,-52%) rotate(360deg); } }
+@keyframes sunSpin { to { transform: rotate(360deg); } }
+.hero-sun-wrap { position: absolute; top: 50%; left: 50%; width: min(118vw, 500px); aspect-ratio: 1; transform: translate(-50%, -46%); pointer-events: none; z-index: 0; }
+.hero-sun-glow { position: absolute; inset: 14%; border-radius: 50%; background: radial-gradient(circle, rgba(246,227,161,.30) 0%, rgba(212,175,55,.14) 38%, transparent 70%); filter: blur(10px); animation: sunPulse 6s ease-in-out infinite; }
+.hero-sun { position: absolute; inset: 0; animation: sunSpin 90s linear infinite; }
+.hero-sun-img { background: url('/sol-corona-oro.webp') center/contain no-repeat; opacity: .30; filter: drop-shadow(0 0 18px rgba(212,175,55,.45)); }
+.hero-sun-shine { -webkit-mask: url('/sol-mask.png') center/contain no-repeat; mask: url('/sol-mask.png') center/contain no-repeat;
+  background: linear-gradient(115deg, transparent 35%, rgba(255,246,210,.55) 48%, transparent 61%); background-size: 250% 100%; opacity: .55;
+  animation: sunSpin 90s linear infinite, sunShine 7s ease-in-out infinite; }
+@keyframes sunShine { 0%,100% { background-position: 120% 0; } 50% { background-position: -20% 0; } }
+@keyframes sunPulse { 0%,100% { opacity: .75; transform: scale(.96); } 50% { opacity: 1; transform: scale(1.04); } }
+.hero-aurora { position: absolute; inset: -20%; pointer-events: none; mix-blend-mode: screen; filter: blur(30px); }
+.hero-aurora-a { background: radial-gradient(40% 30% at 25% 30%, rgba(0,12,217,.55), transparent 70%), radial-gradient(35% 28% at 80% 70%, rgba(26,46,230,.40), transparent 70%); animation: auroraA 18s ease-in-out infinite alternate; }
+.hero-aurora-b { background: radial-gradient(30% 24% at 70% 20%, rgba(0,0,160,.6), transparent 70%), radial-gradient(38% 30% at 20% 80%, rgba(56,90,255,.28), transparent 70%); animation: auroraB 22s ease-in-out infinite alternate; }
+@keyframes auroraA { from { transform: translate(-4%, -2%) scale(1); } to { transform: translate(5%, 4%) scale(1.12); } }
+@keyframes auroraB { from { transform: translate(4%, 3%) scale(1.08); } to { transform: translate(-5%, -4%) scale(.96); } }
+.hero-vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 85% 70% at 50% 45%, transparent 55%, rgba(3,6,28,.75) 100%); }
 @media (prefers-reduced-motion: reduce) {
-  .hero-lantern, .hero-sun { animation: none !important; }
+  .hero-lantern, .hero-sun, .hero-sun-glow, .hero-aurora { animation: none !important; }
+}
+
+/* ================= SAVE THE DATE PREMIUM ================= */
+.std-sec { position: relative; overflow: hidden; isolation: isolate; background: #050b30; display: flex; }
+.std-bg { position: absolute; inset: 0; z-index: 0; background-size: cover; transform: scale(1.06); transition: transform 2.4s cubic-bezier(.2,.7,.2,1); }
+.std-sec.is-in .std-bg { transform: scale(1); }
+.std-tint { position: absolute; inset: 0; z-index: 1; background: radial-gradient(75% 55% at 50% 50%, rgba(5,11,48,.55), rgba(3,6,28,.86)); }
+.std-fade-t, .std-fade-b { position: absolute; left: 0; right: 0; height: 120px; z-index: 1; pointer-events: none; }
+.std-fade-t { top: 0; background: linear-gradient(#050b30, transparent); }
+.std-fade-b { bottom: 0; background: linear-gradient(transparent, #050b30); }
+.std-inner { position: relative; z-index: 2; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 70px 24px; }
+.std-up { opacity: 0; transform: translateY(18px); transition: opacity .9s ease, transform .9s ease; }
+.std-sec.is-in .std-up { opacity: 1; transform: none; }
+.std-sec.is-in .std-up:nth-child(2) { transition-delay: .12s } .std-sec.is-in .std-up:nth-child(3) { transition-delay: .24s }
+.std-sec.is-in .std-up:nth-child(4) { transition-delay: .36s } .std-sec.is-in .std-up:nth-child(5) { transition-delay: .48s }
+.std-sec.is-in .std-up:nth-child(6) { transition-delay: .6s }
+.std-eyebrow { font-family: var(--font-cormorant), serif; font-weight: 700; font-size: 14px; letter-spacing: .32em; text-indent: .32em; text-transform: uppercase; color: #e6c870; }
+.std-rule { display: flex; align-items: center; gap: 8px; margin: 12px auto 14px; }
+.std-rule span { width: 46px; height: 1px; background: linear-gradient(90deg, transparent, #d4af37); }
+.std-rule span:last-child { transform: scaleX(-1); }
+.std-rule i { width: 7px; height: 7px; background: #d4af37; transform: rotate(45deg); box-shadow: 0 0 8px rgba(212,175,55,.8); }
+.std-script { font-family: var(--font-great-vibes), cursive; font-weight: 400; font-size: 60px; line-height: 1.25; }
+.std-sub { font-family: var(--font-cormorant), serif; font-style: italic; font-weight: 600; font-size: 19px; color: #f4ecd8; margin-top: 4px; }
+.std-frase { max-width: 340px; font-family: var(--font-cormorant), serif; font-style: italic; font-weight: 500; font-size: 20px; line-height: 1.65; color: #f4ecd8; text-shadow: 0 2px 14px rgba(0,0,0,.5); margin-bottom: 18px; }
+.std-h2 { font-family: var(--font-cormorant), serif; font-weight: 600; font-size: clamp(30px, 8.6vw, 40px); line-height: 1.2; color: #f4ecd8; text-shadow: 0 2px 18px rgba(0,0,0,.6); }
+.std-p { max-width: 330px; font-family: var(--font-cormorant), serif; font-weight: 500; font-size: 18px; line-height: 1.6; color: rgba(244,236,216,.92); margin: 14px 0 26px; text-shadow: 0 1px 10px rgba(0,0,0,.6); }
+
+/* Fecha */
+.std-dayword { font-family: var(--font-great-vibes), cursive; font-size: 50px; line-height: 1.1; color: #f2d478; }
+.std-date-row { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 6px 0 4px; }
+.std-date-side { font-family: var(--font-cormorant), serif; font-weight: 700; font-size: 17px; letter-spacing: .24em; text-indent: .24em; color: #f4ecd8; padding: 8px 0; min-width: 84px; border-top: 1px solid rgba(212,175,55,.55); border-bottom: 1px solid rgba(212,175,55,.55); }
+.std-big { font-family: var(--font-cormorant), serif; font-weight: 700; font-size: clamp(104px, 31vw, 160px); line-height: 1; display: flex; filter: drop-shadow(0 6px 20px rgba(0,0,0,.6)); }
+.std-roll { display: block; height: 1em; overflow: hidden; }
+.std-roll-strip { display: flex; flex-direction: column; transition: transform 2.2s cubic-bezier(.2,.8,.2,1) .3s; }
+.std-roll-strip span { display: block; height: 1em; line-height: 1; background: linear-gradient(100deg, #b8913a, #f2d478 30%, #fff1c2 45%, #d4af37 60%, #9a7428); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+.std-cal { margin: 30px auto 0; width: 100%; max-width: 340px; padding: 22px 18px 16px; border-radius: 14px; background: linear-gradient(180deg, rgba(10,21,80,.78), rgba(5,11,48,.86)); border: 1px solid rgba(212,175,55,.45); box-shadow: 0 20px 50px rgba(0,0,0,.45), inset 0 0 0 4px rgba(5,11,48,.6), inset 0 0 0 5px rgba(212,175,55,.18); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+.std-cal-h { font-family: var(--font-cormorant), serif; font-weight: 700; font-size: 16px; letter-spacing: .3em; text-indent: .3em; color: #e6c870; margin-bottom: 12px; }
+.std-cal-g { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px 2px; }
+.std-cal-g .wd { font-family: var(--font-cormorant), serif; font-weight: 700; font-size: 14px; color: #9fb0f5; padding-bottom: 6px; }
+.std-cal-g .d { position: relative; font-family: var(--font-cormorant), serif; font-weight: 600; font-size: 17px; line-height: 36px; color: #f4ecd8; }
+.std-cal-g .d b { position: relative; font-weight: inherit; }
+.std-cal-g .d.on b { color: #0a1550; font-weight: 700; }
+.std-cal-sun { position: absolute; left: 50%; top: 50%; width: 52px; height: 52px; transform: translate(-50%, -50%); background: url('/sol-corona-oro.webp') center/contain no-repeat; filter: drop-shadow(0 0 10px rgba(242,212,120,.7)); animation: sunSpin 30s linear infinite; }
+@keyframes calSunIn { from { opacity: 0; scale: .3; } to { opacity: 1; scale: 1; } }
+.std-place { margin-top: 26px; display: flex; flex-direction: column; align-items: center; gap: 4px; font-family: var(--font-cormorant), serif; font-weight: 700; font-size: 17px; letter-spacing: .2em; color: #f4ecd8; }
+.std-place .pl-sub { display: inline-flex; align-items: center; gap: 7px; font-weight: 600; font-size: 18px; letter-spacing: .03em; color: #c4ccfa; }
+.std-place svg { width: 17px; height: 17px; color: #d4af37; }
+
+/* Cuenta: medallones con sol de Corona */
+.std-cd { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 34px auto 0; width: 100%; max-width: 440px; }
+.std-md { position: relative; aspect-ratio: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 50%; background: radial-gradient(circle at 50% 35%, rgba(20,37,110,.95), rgba(5,11,48,.95)); box-shadow: 0 10px 26px rgba(0,0,0,.5), 0 0 22px rgba(212,175,55,.18); }
+.std-md-sun { position: absolute; inset: -18%; background: url('/sol-corona-oro.webp') center/contain no-repeat; opacity: .22; animation: sunSpin 40s linear infinite; z-index: -1; }
+.std-md:nth-child(2) .std-md-sun { animation-direction: reverse; animation-duration: 50s; }
+.std-md:nth-child(4) .std-md-sun { animation-direction: reverse; animation-duration: 34s; }
+.std-md svg { position: absolute; inset: -3px; width: calc(100% + 6px); height: calc(100% + 6px); transform: rotate(-90deg); }
+.std-md .num { font-family: var(--font-cormorant), serif; font-weight: 700; font-size: clamp(25px, 7.4vw, 36px); line-height: 1; color: #fff3c8; animation: stdTick .5s ease; }
+.std-md .lbl { font-family: var(--font-cormorant), serif; font-weight: 700; font-size: 11.5px; letter-spacing: .14em; color: #c4ccfa; margin-top: 4px; }
+.std-orbit { position: absolute; inset: -3px; border-radius: 50%; animation: sunSpin 9s linear infinite; }
+.std-md:nth-child(2) .std-orbit { animation-duration: 11s; animation-direction: reverse; }
+.std-md:nth-child(3) .std-orbit { animation-duration: 13s; }
+.std-md:nth-child(4) .std-orbit { animation-duration: 7s; animation-direction: reverse; }
+.std-orbit::after { content: ""; position: absolute; left: 50%; top: -3px; width: 7px; height: 7px; margin-left: -3.5px; border-radius: 50%; background: #fff1b0; box-shadow: 0 0 10px 3px rgba(255,214,110,.8); }
+@keyframes stdTick { 0% { transform: rotateX(0); } 45% { transform: rotateX(90deg); opacity: .2; } 100% { transform: rotateX(0); } }
+
+/* Botón con brillo suave */
+.std-btn { position: relative; overflow: hidden; display: inline-flex; align-items: center; gap: 10px; padding: 16px 30px; border-radius: 40px; text-decoration: none;
+  font-family: var(--font-cormorant), serif; font-weight: 700; font-size: 16px; letter-spacing: .16em; text-transform: uppercase; color: #0a1550;
+  background: linear-gradient(135deg, #f6e3a1 0%, #d4af37 45%, #b8913a 100%); box-shadow: 0 10px 30px rgba(212,175,55,.35), inset 0 1px 0 rgba(255,255,255,.6); animation: btnGlow 3.2s ease-in-out infinite; }
+.std-btn svg { width: 19px; height: 19px; }
+.std-btn::after { content: ""; position: absolute; top: 0; left: -60%; width: 45%; height: 100%; background: linear-gradient(105deg, transparent, rgba(255,255,255,.75), transparent); transform: skewX(-18deg); animation: btnShine 3.6s ease-in-out infinite; }
+@keyframes btnShine { 0%, 55% { left: -60%; } 100% { left: 130%; } }
+@keyframes btnGlow { 0%, 100% { box-shadow: 0 10px 30px rgba(212,175,55,.30), inset 0 1px 0 rgba(255,255,255,.6); } 50% { box-shadow: 0 10px 42px rgba(242,212,120,.6), inset 0 1px 0 rgba(255,255,255,.6); } }
+
+/* Hero: tarjeta que ondea y retrato que levita */
+.hero-card-float { animation: cardWave 7s ease-in-out infinite; transform-origin: 50% 0; }
+@keyframes cardWave { 0%, 100% { transform: translateY(0) rotate(-.6deg); } 50% { transform: translateY(-6px) rotate(.6deg); } }
+.retrato-float { animation: levitate 6s ease-in-out infinite; }
+@keyframes levitate { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+
+/* Pie */
+.std-foot { position: relative; background: #050b30; text-align: center; padding: 50px 24px 60px; }
+.std-foot-sun { display: block; width: 64px; height: 64px; margin: 0 auto 6px; background: url('/sol-corona-oro.webp') center/contain no-repeat; animation: sunSpin 40s linear infinite; }
+.std-foot-j { font-family: var(--font-great-vibes), cursive; font-size: 54px; line-height: 1.2; }
+.std-foot-date { font-family: var(--font-cormorant), serif; font-weight: 700; font-size: 15px; letter-spacing: .3em; text-indent: .3em; color: #e6c870; margin-top: 4px; }
+.std-foot-cred { font-family: var(--font-cormorant), serif; font-weight: 500; font-size: 16px; color: rgba(244,236,216,.8); margin-top: 22px; }
+.std-foot-cred a { color: #e6c870; text-decoration: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .std-btn, .std-btn::after, .std-orbit, .std-md-sun, .std-cal-sun, .hero-card-float, .retrato-float, .std-foot-sun { animation: none !important; }
+  .std-roll-strip { transition: none; }
 }

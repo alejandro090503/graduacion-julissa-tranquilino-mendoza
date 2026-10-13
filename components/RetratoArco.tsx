@@ -2,8 +2,8 @@
    sobre noche azul marino. Sustituye al carrusel en el Save the Date. */
 export default function RetratoArco() {
   return (
-    <section style={{ padding: "40px 26px 48px", display: "flex", justifyContent: "center" }}>
-      <figure style={{ margin: 0, position: "relative", width: "100%", maxWidth: 320 }}>
+    <section style={{ padding: "30px 10px 10px", display: "flex", justifyContent: "center", width: "100%" }}>
+      <figure className="retrato-float" style={{ margin: 0, position: "relative", width: "100%", maxWidth: 320 }}>
         <div style={{
           position: "relative",
           padding: 10,
@@ -50,15 +50,8 @@ export default function RetratoArco() {
             </figcaption>
           </div>
         </div>
-        {/* sol pequeño en la clave del arco */}
-        <svg aria-hidden="true" width="34" height="34" viewBox="0 0 34 34"
-          style={{ position: "absolute", top: -17, left: "50%", transform: "translateX(-50%)" }}>
-          <circle cx="17" cy="17" r="16" fill="#0a1550" stroke="#d4af37" strokeWidth="1" />
-          {Array.from({ length: 12 }, (_, i) => (
-            <path key={i} transform={`rotate(${i * 30} 17 17)`} d="M17 5 L18.2 11 L17 12.5 L15.8 11 Z" fill="#d4af37" />
-          ))}
-          <circle cx="17" cy="17" r="4" fill="#d4af37" />
-        </svg>
+        {/* sol de Corona en la clave del arco */}
+        <i aria-hidden="true" className="std-cal-sun" style={{ top: 0, width: 64, height: 64 }} />
       </figure>
     </section>
   );

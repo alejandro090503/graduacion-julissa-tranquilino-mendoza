@@ -117,20 +117,14 @@ function GradCap() {
   );
 }
 
-/** Sol de la torre en filigrana dorada, muy tenue detrás del marco */
+/** Sol de Corona (emblema real, horneado en oro) detrás del marco */
 function SunEmblem() {
-  const rays = Array.from({ length: 16 }, (_, i) => i * 22.5);
   return (
-    <svg className="hero-sun" viewBox="0 0 200 200" width="430" height="430" aria-hidden="true"
-      style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-52%)", opacity: 0.14, animation: "sunSpin 140s linear infinite", pointerEvents: "none" }}>
-      <circle cx="100" cy="100" r="34" stroke="#d4af37" strokeWidth="0.8" fill="none" />
-      <circle cx="100" cy="100" r="28" stroke="#d4af37" strokeWidth="0.4" fill="none" />
-      {rays.map((r, i) => (
-        <path key={r} transform={`rotate(${r} 100 100)`}
-          d={i % 2 ? "M100 64 Q104 50 100 34 Q96 50 100 64" : "M100 64 Q107 42 100 12 Q93 42 100 64"}
-          stroke="#d4af37" strokeWidth="0.7" fill="none" />
-      ))}
-    </svg>
+    <div className="hero-sun-wrap" aria-hidden="true">
+      <div className="hero-sun-glow" />
+      <div className="hero-sun hero-sun-img" />
+      <div className="hero-sun hero-sun-shine" />
+    </div>
   );
 }
 
@@ -185,6 +179,11 @@ export default function Hero() {
       padding: "64px 0 64px",
       isolation: "isolate",
     }}>
+      {/* Aurora azul rey: degradados que respiran */}
+      <div aria-hidden="true" className="hero-aurora hero-aurora-a" />
+      <div aria-hidden="true" className="hero-aurora hero-aurora-b" />
+      <div aria-hidden="true" className="hero-vignette" />
+
       {/* Cielo estrellado */}
       <div aria-hidden="true" style={{
         position: "absolute", inset: 0, pointerEvents: "none", opacity: 0.85,
@@ -255,7 +254,7 @@ export default function Hero() {
       </div>
 
       {/* Marco */}
-      <div style={{ width: "100%", maxWidth: 360, padding: "0 24px", marginTop: 30, position: "relative" }}>
+      <div className="hero-card-float" style={{ width: "100%", maxWidth: 360, padding: "0 24px", marginTop: 30, position: "relative" }}>
         <div ref={frameRef} style={{
           position: "relative",
           border: "1px solid rgba(212,175,55,0.7)",
