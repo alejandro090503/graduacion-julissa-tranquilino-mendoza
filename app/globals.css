@@ -331,15 +331,45 @@ body {
 .retrato-float { animation: levitate 6s ease-in-out infinite; }
 @keyframes levitate { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
 
-/* Pie */
-.std-foot { position: relative; background: #050b30; text-align: center; padding: 50px 24px 60px; }
-.std-foot-sun { display: block; width: 64px; height: 64px; margin: 0 auto 6px; background: url('/sol-corona-oro.webp') center/contain no-repeat; animation: sunSpin 40s linear infinite; }
-.std-foot-j { font-family: var(--font-great-vibes), cursive; font-size: 54px; line-height: 1.2; }
-.std-foot-date { font-family: var(--font-cormorant), serif; font-weight: 700; font-size: 15px; letter-spacing: .3em; text-indent: .3em; color: #e6c870; margin-top: 4px; }
-.std-foot-cred { font-family: var(--font-cormorant), serif; font-weight: 500; font-size: 16px; color: rgba(244,236,216,.8); margin-top: 22px; }
-.std-foot-cred a { color: #e6c870; text-decoration: none; }
+/* Linternas por sección */
+.std-lanterns { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+.std-lanterns .hero-lantern { position: absolute; bottom: -40px; border-radius: 35% 35% 28% 28%; background: linear-gradient(180deg, #ffe7a3 0%, #f2b84b 55%, #c9832a 100%); }
+
+/* Vida: elementos que levitan y ondean */
+.std-cal { animation: levitate 7s ease-in-out infinite; }
+.std-dayword { display: inline-block; animation: cardWave 6s ease-in-out infinite; }
+.std-big { animation: levitate 8s ease-in-out infinite; }
+.std-md { animation: levitate 5s ease-in-out infinite; }
+.std-md:nth-child(2) { animation-delay: -1.2s; } .std-md:nth-child(3) { animation-delay: -2.4s; } .std-md:nth-child(4) { animation-delay: -3.6s; }
+.std-rule i { animation: ruleGlow 3s ease-in-out infinite; }
+@keyframes ruleGlow { 0%, 100% { box-shadow: 0 0 6px rgba(212,175,55,.6); } 50% { box-shadow: 0 0 16px rgba(255,226,140,1); } }
+.std-place svg { animation: levitate 3s ease-in-out infinite; }
+@media (max-width: 360px) { .std-cd { gap: 6px; } .std-date-side { min-width: 70px; font-size: 15px; } .std-cal { padding: 18px 12px 14px; } }
+
+/* Pie premium */
+.std-foot { position: relative; overflow: hidden; isolation: isolate; text-align: center; padding: 70px 24px 56px;
+  background: radial-gradient(120% 70% at 50% 0%, #14256e 0%, #0a1550 45%, #03061c 100%); }
+.std-foot::before { content: ""; position: absolute; top: 0; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg, transparent, #d4af37, transparent); }
+.std-foot-sky { position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .8;
+  background-image: radial-gradient(1px 1px at 15% 20%, rgba(255,255,255,.6) 50%, transparent 51%), radial-gradient(1.5px 1.5px at 78% 14%, #f6e3a1 50%, transparent 51%),
+    radial-gradient(1px 1px at 40% 60%, rgba(255,255,255,.45) 50%, transparent 51%), radial-gradient(1px 1px at 88% 70%, rgba(255,255,255,.5) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 8% 82%, #f6e3a1 50%, transparent 51%), radial-gradient(1px 1px at 60% 90%, rgba(255,255,255,.4) 50%, transparent 51%); }
+.std-foot-inner { position: relative; z-index: 2; max-width: 380px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+.std-foot-medal { position: relative; width: 150px; height: 150px; display: grid; place-items: center; animation: levitate 6s ease-in-out infinite; }
+.std-foot-sun { position: absolute; inset: 0; background: url('/sol-corona-oro.webp') center/contain no-repeat; filter: drop-shadow(0 0 18px rgba(242,212,120,.45)); animation: sunSpin 50s linear infinite; }
+.std-foot-ring { position: absolute; inset: 34%; border-radius: 50%; background: radial-gradient(circle at 50% 35%, #14256e, #050b30); box-shadow: 0 0 0 1.5px #d4af37, 0 0 0 5px #050b30, 0 0 0 6px rgba(212,175,55,.5), 0 8px 22px rgba(0,0,0,.5); }
+.std-foot-j { position: relative; font-family: var(--font-great-vibes), cursive; font-size: 44px; line-height: 1; padding-top: 6px; }
+.std-foot-name { font-family: var(--font-cormorant), serif; font-weight: 700; font-size: clamp(16px, 4.6vw, 19px); letter-spacing: .2em; text-indent: .2em; text-transform: uppercase; color: #f4ecd8; margin-top: 14px; line-height: 1.5; }
+.std-foot-date { font-family: var(--font-cormorant), serif; font-weight: 700; font-size: 17px; letter-spacing: .34em; text-indent: .34em; color: #e6c870; }
+.std-foot-gen { font-family: var(--font-cormorant), serif; font-style: italic; font-weight: 600; font-size: 17px; color: #c4ccfa; margin-top: 6px; }
+.std-foot-quote { font-family: var(--font-great-vibes), cursive; font-size: 34px; color: #f2d478; margin-top: 18px; animation: cardWave 7s ease-in-out infinite; }
+.std-foot-cred { margin-top: 34px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.std-foot-line { width: 1px; height: 34px; background: linear-gradient(transparent, #d4af37); }
+.std-foot-cred p { font-family: var(--font-cormorant), serif; font-weight: 500; font-size: 16px; line-height: 1.5; color: rgba(244,236,216,.82); }
+.std-foot-cred a { color: #e6c870; font-weight: 700; letter-spacing: .04em; text-decoration: none; border-bottom: 1px solid rgba(212,175,55,.4); padding-bottom: 2px; }
+@media (min-width: 431px) { .std-foot { padding: 90px 24px 70px; } .std-foot-medal { width: 180px; height: 180px; } }
 
 @media (prefers-reduced-motion: reduce) {
-  .std-btn, .std-btn::after, .std-orbit, .std-md-sun, .std-cal-sun, .hero-card-float, .retrato-float, .std-foot-sun { animation: none !important; }
+  .std-btn, .std-btn::after, .std-orbit, .std-md-sun, .std-cal-sun, .hero-card-float, .retrato-float, .std-foot-sun, .std-cal, .std-dayword, .std-big, .std-md, .std-rule i, .std-place svg, .std-foot-medal, .std-foot-quote, .std-lanterns .hero-lantern { animation: none !important; }
   .std-roll-strip { transition: none; }
 }

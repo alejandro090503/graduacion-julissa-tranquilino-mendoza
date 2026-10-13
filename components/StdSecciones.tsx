@@ -30,11 +30,32 @@ function useInView<T extends HTMLElement>() {
   return [ref, inView] as const;
 }
 
-function Fondo({ src, pos = "center" }: { src: string; pos?: string }) {
+const LINTERNAS = [
+  { l: "5%", w: 10, d: 24, o: 0.7 }, { l: "17%", w: 7, d: 30, o: 0.5 }, { l: "29%", w: 12, d: 26, o: 0.8 },
+  { l: "44%", w: 6, d: 33, o: 0.45 }, { l: "58%", w: 11, d: 25, o: 0.75 }, { l: "71%", w: 8, d: 29, o: 0.55 },
+  { l: "84%", w: 13, d: 23, o: 0.85 }, { l: "94%", w: 7, d: 31, o: 0.5 },
+];
+
+export function Linternas({ seed = 0 }: { seed?: number }) {
+  return (
+    <div className="std-lanterns" aria-hidden="true">
+      {LINTERNAS.map((x, i) => (
+        <span key={i} className="hero-lantern" style={{
+          left: x.l, width: x.w, height: Math.round(x.w * 1.35), opacity: x.o,
+          boxShadow: `0 0 ${x.w * 1.4}px ${x.w * 0.5}px rgba(255,190,90,0.42)`,
+          animation: `lanternRise ${x.d}s ${-((i * 7 + seed * 5) % x.d)}s linear infinite`,
+        }} />
+      ))}
+    </div>
+  );
+}
+
+function Fondo({ src, pos = "center", seed = 0 }: { src: string; pos?: string; seed?: number }) {
   return (
     <>
       <div className="std-bg" style={{ backgroundImage: `url(${src})`, backgroundPosition: pos }} aria-hidden="true" />
       <div className="std-tint" aria-hidden="true" />
+      <Linternas seed={seed} />
       <div className="std-fade-t" aria-hidden="true" />
       <div className="std-fade-b" aria-hidden="true" />
     </>
@@ -68,7 +89,7 @@ export function Fecha() {
   const seq = (n: number) => Array.from({ length: n + 1 }, (_, i) => i % 10);
   return (
     <section ref={ref} className={`std-sec ${inView ? "is-in" : ""}`} style={{ minHeight: "100svh" }}>
-      <Fondo src="/fondos/bg-torre.webp" pos="center 30%" />
+      <Fondo src="/fondos/bg-torre.webp" pos="center 30%" seed={1} />
       <div className="std-inner">
         <p className="std-eyebrow std-up">Guarda la fecha</p>
         <Regla />
@@ -147,7 +168,7 @@ export function Cuenta() {
   }, []);
   return (
     <section ref={ref} className={`std-sec ${inView ? "is-in" : ""}`} style={{ minHeight: "92svh" }}>
-      <Fondo src="/fondos/bg-lago.webp" pos="center 40%" />
+      <Fondo src="/fondos/bg-lago.webp" pos="center 40%" seed={2} />
       <div className="std-inner">
         <p className="std-eyebrow std-up">Cuenta regresiva</p>
         <h2 className="std-script gold-shine gold-shine-cierre std-up">Faltan</h2>
@@ -169,7 +190,7 @@ export function Pronto() {
   const [ref, inView] = useInView<HTMLElement>();
   return (
     <section ref={ref} className={`std-sec ${inView ? "is-in" : ""}`} style={{ minHeight: "92svh" }}>
-      <Fondo src="/fondos/bg-2027.webp" pos="center 20%" />
+      <Fondo src="/fondos/bg-2027.webp" pos="center 20%" seed={3} />
       <div className="std-inner" style={{ justifyContent: "flex-end", paddingBottom: 90 }}>
         <p className="std-eyebrow std-up">Muy pronto</p>
         <Regla />
@@ -206,13 +227,27 @@ export function Carta({ children, frase }: { children: React.ReactNode; frase: s
 export function PieStd() {
   return (
     <footer className="std-foot">
-      <i className="std-foot-sun" aria-hidden="true" />
-      <p className="std-foot-j gold-shine gold-shine-cierre">J</p>
-      <p className="std-foot-date">XXII · MAYO · MMXXVII</p>
-      <p className="std-foot-cred">
-        Con mucho cariño por{" "}
-        <a href="https://www.instagram.com/elysium.invitaciones" target="_blank" rel="noopener noreferrer">@elysium.invitaciones</a>
-      </p>
+      <div className="std-foot-sky" aria-hidden="true" />
+      <Linternas seed={4} />
+      <div className="std-foot-inner">
+        <div className="std-foot-medal">
+          <i className="std-foot-sun" aria-hidden="true" />
+          <span className="std-foot-ring" aria-hidden="true" />
+          <span className="std-foot-j gold-shine gold-shine-cierre">J</span>
+        </div>
+        <p className="std-foot-name">Julissa Tranquilino Mendoza</p>
+        <div className="std-rule" aria-hidden="true"><span /><i /><span /></div>
+        <p className="std-foot-date">XXII · V · MMXXVII</p>
+        <p className="std-foot-gen">Generación 2023 · 2027</p>
+        <p className="std-foot-quote">&ldquo;Por fin veo la luz&rdquo;</p>
+        <div className="std-foot-cred">
+          <span className="std-foot-line" aria-hidden="true" />
+          <p>
+            Diseño con cariño por<br />
+            <a href="https://www.instagram.com/elysium.invitaciones" target="_blank" rel="noopener noreferrer">@elysium.invitaciones</a>
+          </p>
+        </div>
+      </div>
     </footer>
   );
 }
