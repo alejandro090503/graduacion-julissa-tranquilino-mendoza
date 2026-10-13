@@ -43,6 +43,9 @@ export default function Cierre() {
         }}
       />
 
+      <div className="seam-t" aria-hidden="true" style={{ zIndex: -1 }} />
+      <div className="seam-b" aria-hidden="true" style={{ zIndex: -1 }} />
+
       {/* Velo abierto arriba (rostro visible) y denso abajo (texto legible) */}
       <div
         aria-hidden

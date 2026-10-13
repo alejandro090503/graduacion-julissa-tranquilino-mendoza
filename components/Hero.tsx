@@ -334,6 +334,7 @@ export default function Hero() {
         </div>
       </div>
 
+      <div className="seam-b" aria-hidden="true" />
       <div style={{ position: "absolute", bottom: 22, left: "50%", transform: "translateX(-50%)", animation: "hintFloat 3s ease-in-out infinite" }}>
         <div style={{ width: 1, height: 30, background: "linear-gradient(to bottom, transparent, rgba(212,175,55,0.8))" }} />
       </div>
