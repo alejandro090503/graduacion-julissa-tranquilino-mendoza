@@ -3,9 +3,9 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useT } from "@/lib/i18n";
 
 const VIDEO_ENVELOPES =
-  "https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/video/xv-magy/envelopes.mp4";
+  "https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/video/graduacion-julissa-tranquilino-mendoza/envelopes.mp4";
 const VIDEO_PRINCESS =
-  "https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/video/xv-magy/princess.mp4";
+  "https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/video/graduacion-julissa-tranquilino-mendoza/princess.mp4";
 
 /** Duración del crossfade entre escenas (ms) */
 const XFADE = 900;
